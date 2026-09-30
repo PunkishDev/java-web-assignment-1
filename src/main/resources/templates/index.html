@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Booking</title>
+  </head>
+  <body>
+    <h1>Event Booking System</h1>
+    <div class="unsold">
+      <h2>Unsold Tickets</h2>
+      <table>
+        <thead>
+          <th>Ticket Name</th>
+          <th>Ticket Price</th>
+          <th colspan="2">Action</th>
+        </thead>
+        <tbody>
+          <tr th:each="ticket : ${unsoldTickets}">
+            <td th:text="${ticket.getTitle()}"></td>
+            <td th:text="${'$' + ticket.getPrice()}"></td>
+            <td>
+              <form
+                th:action="@{/tickets/{id}/edit(id=${ticket.getId()})}"
+                method="get"
+              >
+                <button type="submit">Edit</button>
+              </form>
+            </td>
+            <td>
+              <form
+                th:action="@{/tickets/{id}/sell(id=${ticket.getId()})}"
+                method="post"
+              >
+                <button type="submit">Sell</button>
+              </form>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <hr />
+    <div class="sold tickets">
+      <h2>Sold Tickets</h2>
+      <table>
+        <thead>
+          <th>Ticket Name</th>
+          <th>Ticket Price</th>
+        </thead>
+        <tbody>
+          <tr th:each="ticket: ${soldTickets}">
+            <td th:text="${ticket.getTitle()}"></td>
+            <td th:text="${'$' + ticket.getPrice()}"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
