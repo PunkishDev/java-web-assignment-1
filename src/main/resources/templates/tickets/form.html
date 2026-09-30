@@ -6,6 +6,28 @@
     <title th:text="${ticket.getTitle()}">Document</title>
   </head>
   <body>
-    <h1>meow</h1>
+    <h1 th:text="${'Edit > ' + ticket.getTitle()}"></h1>
+    <form
+      th:action="@{/tickets/{id}/edit(id=${ticket.getId()})}"
+      th:object="${ticket}"
+      method="post"
+    >
+      <label for="id">
+        Id:
+        <input type="text" th:field="*{id}" readonly />
+      </label>
+      <br />
+      <label for="title"
+        >Title:
+        <input type="text" th:field="*{title}" />
+      </label>
+      <br />
+      <label for="price">
+        Price:
+        <input type="number" th:field="*{price}" />
+      </label>
+      <br />
+      <button type="submit">Save Changes</button>
+    </form>
   </body>
 </html>

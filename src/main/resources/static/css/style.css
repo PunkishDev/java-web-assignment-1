@@ -1,0 +1,62 @@
+body {
+  background-color: cyan;
+  display: grid;
+  justify-content: center;
+  text-align: center;
+}
+
+.tickets {
+  margin: 2%;
+  margin-left: 0%;
+  padding: 1.5%;
+  border: 3px solid #95fbff;
+  border-radius: 5%;
+  box-shadow:
+    0 0 15px #0cdfea,
+    inset 0 0 15px #0cdfea;
+}
+
+table {
+  background-color: mediumturquoise;
+  border-radius: 1%;
+  border: 1px solid ghostwhite;
+  border-collapse: collapse;
+  width: 90vw;
+  margin: 0%;
+  padding: 0%;
+}
+
+th {
+  height: fit-content;
+  border-bottom: 2px solid darkgray;
+  padding: 0%;
+  background-color: aqua;
+}
+
+tbody tr {
+  border-bottom: 2px solid darkslategray;
+}
+
+tbody tr:nth-child(even) {
+  background-color: aqua;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: darkturquoise;
+}
+
+.actions {
+  padding-left: 0%;
+  padding-right: 0%;
+}
+
+button {
+  width: 100%;
+  border: none;
+  background-color: transparent;
+}
+
+button:hover {
+  text-decoration: underline;
+  background-color: ghostwhite;
+}

@@ -68,4 +68,16 @@ public class TicketService {
 
         throw new TicketNotFoundException(ticket.getId());
     }
+
+    public Ticket updateTicket(Ticket ticket) {
+        for (Ticket t : tickets) {
+            if (t.equals(ticket)) {
+                t.setTitle(ticket.getTitle());
+                t.setPrice(ticket.getPrice());
+                return t;
+            }
+        }
+
+        throw new TicketNotFoundException(ticket.getId());
+    }
 }

@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Booking</title>
+  </head>
+  <body>
+    <h1>Selling Ticket</h1>
+    <p>
+      Please confirm that you want to sell this ticket by checking the box
+      below.
+    </p>
+    <form th:action="@{/tickets/{id}/sell(id=${ticket.getId()})}" method="post">
+      <input type="checkbox" name="confirm" value="yes" />
+      <label
+        for="confirm"
+        th:text="${'I confirm that I want to sell the ticket &quot;' + ticket.getTitle() + '&quot; for the price of $' + #numbers.formatDecimal(ticket.getPrice().floatValue() / 100, 1, 2) + '.'}"
+      >
+      </label>
+      <br />
+      <button type="submit">Confirm Sale</button>
+    </form>
+  </body>
+</html>

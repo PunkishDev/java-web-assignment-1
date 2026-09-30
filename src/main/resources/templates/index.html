@@ -4,10 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Event Booking</title>
+    <link rel="stylesheet" th:href="@{css/style.css}" />
   </head>
   <body>
     <h1>Event Booking System</h1>
-    <div class="unsold">
+    <div class="unsold tickets">
       <h2>Unsold Tickets</h2>
       <table>
         <thead>
@@ -18,8 +19,10 @@
         <tbody>
           <tr th:each="ticket : ${unsoldTickets}">
             <td th:text="${ticket.getTitle()}"></td>
-            <td th:text="${'$' + ticket.getPrice()}"></td>
-            <td>
+            <td
+              th:text="${'$' + #numbers.formatDecimal(ticket.getPrice().floatValue() / 100, 1, 2)}"
+            ></td>
+            <td class="actions">
               <form
                 th:action="@{/tickets/{id}/edit(id=${ticket.getId()})}"
                 method="get"
@@ -27,10 +30,10 @@
                 <button type="submit">Edit</button>
               </form>
             </td>
-            <td>
+            <td class="actions">
               <form
                 th:action="@{/tickets/{id}/sell(id=${ticket.getId()})}"
-                method="post"
+                method="get"
               >
                 <button type="submit">Sell</button>
               </form>
@@ -39,7 +42,6 @@
         </tbody>
       </table>
     </div>
-    <hr />
     <div class="sold tickets">
       <h2>Sold Tickets</h2>
       <table>
