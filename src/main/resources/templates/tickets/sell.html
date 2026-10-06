@@ -15,7 +15,7 @@
       <input type="checkbox" name="confirm" value="yes" />
       <label
         for="confirm"
-        th:text="${'I confirm that I want to sell the ticket &quot;' + ticket.getTitle() + '&quot; for the price of $' + #numbers.formatDecimal(ticket.getPrice().floatValue() / 100, 1, 2) + '.'}"
+        th:text="${'I confirm that I want to sell the ticket &quot;' + ticket.getTitle() + '&quot; for the price of ' + #numbers.formatCurrency(ticket.getPrice() / 100.00) + '.'}"
       >
       </label>
       <br />

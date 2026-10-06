@@ -20,7 +20,7 @@
           <tr th:each="ticket : ${unsoldTickets}">
             <td th:text="${ticket.getTitle()}"></td>
             <td
-              th:text="${'$' + #numbers.formatDecimal(ticket.getPrice().floatValue() / 100, 1, 2)}"
+              th:text="${#numbers.formatCurrency(ticket.getPrice() / 100.00)}"
             ></td>
             <td class="actions">
               <form
@@ -52,7 +52,9 @@
         <tbody>
           <tr th:each="ticket: ${soldTickets}">
             <td th:text="${ticket.getTitle()}"></td>
-            <td th:text="${'$' + ticket.getPrice()}"></td>
+            <td
+              th:text="${#numbers.formatCurrency(ticket.getPrice() / 100.00)}"
+            ></td>
           </tr>
         </tbody>
       </table>
