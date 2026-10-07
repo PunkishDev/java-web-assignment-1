@@ -4,30 +4,49 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title th:text="${ticket.getTitle()}">Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <h1 th:text="${'Edit > ' + ticket.getTitle()}"></h1>
-    <form
-      th:action="@{/tickets/{id}/edit(id=${ticket.getId()})}"
-      th:object="${ticket}"
-      method="post"
-    >
-      <label for="id">
-        Id:
-        <input type="text" th:field="*{id}" readonly />
-      </label>
-      <br />
-      <label for="title"
-        >Title:
-        <input type="text" th:field="*{title}" />
-      </label>
-      <br />
-      <label for="price">
-        Price:
-        <input type="number" th:field="*{price}" />
-      </label>
-      <br />
-      <button type="submit">Save Changes</button>
-    </form>
+    <div class="container">
+      <div class="col">
+        <div class="row">
+          <h1 th:text="${'Edit > ' + ticket.getTitle()}"></h1>
+        </div>
+      </div>
+      <div class="col">
+        <div class="row">
+          <form
+            th:action="@{/tickets/{id}/edit(id=${ticket.getId()})}"
+            th:object="${ticket}"
+            method="post"
+          >
+            <div class="mb-3">
+              <label for="id" class="form-label">Id</label>
+              <input
+                type="text"
+                class="form-control"
+                th:field="*{id}"
+                disabled
+                readonly
+              />
+            </div>
+            <div class="mb-3">
+              <label for="title" class="form-label">Title</label>
+              <input type="text" class="form-control" th:field="*{title}" />
+            </div>
+            <div class="mb-3">
+              <label for="price" class="form-label">Price</label>
+              <input type="number" class="form-control" th:field="*{price}" />
+            </div>
+            <button type="submit" class="btn btn-outline-primary">
+              Save Changes
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

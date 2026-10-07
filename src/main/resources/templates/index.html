@@ -4,60 +4,81 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Event Booking</title>
-    <link rel="stylesheet" th:href="@{css/style.css}" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <h1>Event Booking System</h1>
-    <div class="unsold tickets">
-      <h2>Unsold Tickets</h2>
-      <table>
-        <thead>
-          <th>Ticket Name</th>
-          <th>Ticket Price</th>
-          <th colspan="2">Action</th>
-        </thead>
-        <tbody>
-          <tr th:each="ticket : ${unsoldTickets}">
-            <td th:text="${ticket.getTitle()}"></td>
-            <td
-              th:text="${#numbers.formatCurrency(ticket.getPrice() / 100.00)}"
-            ></td>
-            <td class="actions">
-              <form
-                th:action="@{/tickets/{id}/edit(id=${ticket.getId()})}"
-                method="get"
-              >
-                <button type="submit">Edit</button>
-              </form>
-            </td>
-            <td class="actions">
-              <form
-                th:action="@{/tickets/{id}/sell(id=${ticket.getId()})}"
-                method="get"
-              >
-                <button type="submit">Sell</button>
-              </form>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="sold tickets">
-      <h2>Sold Tickets</h2>
-      <table>
-        <thead>
-          <th>Ticket Name</th>
-          <th>Ticket Price</th>
-        </thead>
-        <tbody>
-          <tr th:each="ticket: ${soldTickets}">
-            <td th:text="${ticket.getTitle()}"></td>
-            <td
-              th:text="${#numbers.formatCurrency(ticket.getPrice() / 100.00)}"
-            ></td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="container">
+      <div class="col">
+        <div class="row">
+          <h1>Event Booking System</h1>
+        </div>
+      </div>
+      <div class="col">
+        <div class="row">
+          <div class="unsold tickets">
+            <h2>Unsold Tickets</h2>
+            <table class="table table-striped table-hover">
+              <thead>
+                <th class="col">Ticket Name</th>
+                <th class="col">Ticket Price</th>
+                <th class="col" colspan="2">Action</th>
+              </thead>
+              <tbody>
+                <tr th:each="ticket : ${unsoldTickets}">
+                  <td th:text="${ticket.getTitle()}"></td>
+                  <td
+                    th:text="${#numbers.formatCurrency(ticket.getPrice() / 100.00)}"
+                  ></td>
+                  <td class="actions">
+                    <form
+                      th:action="@{/tickets/{id}/edit(id=${ticket.getId()})}"
+                      method="get"
+                    >
+                      <button type="submit" class="btn btn-outline-primary">
+                        Edit
+                      </button>
+                    </form>
+                  </td>
+                  <td class="actions">
+                    <form
+                      th:action="@{/tickets/{id}/sell(id=${ticket.getId()})}"
+                      method="get"
+                    >
+                      <button type="submit" class="btn btn-outline-success">
+                        Sell
+                      </button>
+                    </form>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="row">
+          <div class="sold tickets">
+            <h2>Sold Tickets</h2>
+            <table class="table table-striped table-hover">
+              <thead>
+                <th class="col">Ticket Name</th>
+                <th class="col">Ticket Price</th>
+              </thead>
+              <tbody>
+                <tr th:each="ticket: ${soldTickets}">
+                  <td th:text="${ticket.getTitle()}"></td>
+                  <td
+                    th:text="${#numbers.formatCurrency(ticket.getPrice() / 100.00)}"
+                  ></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 </html>
